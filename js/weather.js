@@ -37,8 +37,13 @@ async function allowedToLeaveDueToWeather(type, city) {
         console.log("Fout bij het ophalen van de temperatuur");
     });
 
-    if (temperature > 25 && type == "cold") {return false;}
-    if (type == "fragile" && (condition == "Sneeuw" || condition == "Regen")) {return false;}
+    if (temperature > 25 && type == "cold") {
+        return false;
+    }
+    
+    if (type == "fragile" && (condition == "Sneeuw" || condition == "Regen")) {
+        return false;
+    }
     return true;
 }
 
