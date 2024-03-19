@@ -1,4 +1,4 @@
-let key = "adf361d7c7a840f58bd145207221206";
+let key = "7e6c828a1cfc435b830115527241903";
 let temperature = 0;
 let condition = "";
 
