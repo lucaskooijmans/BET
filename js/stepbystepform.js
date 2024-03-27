@@ -7,24 +7,24 @@ function showStep(n) {
     tabs[n].style.display = "block";
 
     if (n == (tabs.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "Submit";
+        document.querySelector("#nextBtn").innerHTML = "Submit";
     } else {
-        document.getElementById("nextBtn").innerHTML = "Volgende";
+        document.querySelector("#nextBtn").innerHTML = "Volgende";
     }
 }
 
 function nextStep() {
-    var tabs = document.getElementsByClassName("tab");
+    var tabs = document.querySelector(".tab");
     if (!validateForm()) return false;
     tabs[currentStep].style.display = "none";
     currentStep++;
     if (currentStep >= tabs.length) {
         createTruck(currentHallId, 
-			document.getElementById("length").value,
-			document.getElementById("width").value,
-			document.getElementById("arrival_interval").value,
-			document.getElementById("type").value,
-			document.getElementById("radius").value
+			document.querySelector("#length").value,
+			document.querySelector("#width").value,
+			document.querySelector("#arrival_interval").value,
+			document.querySelector("#type").value,
+			document.querySelector("#radius").value
 		);
         resetForm();
     }
@@ -33,8 +33,8 @@ function nextStep() {
 
 function validateForm() {
     var tabs, tab, i, valid = true;
-    var tabs = document.getElementsByClassName("tab");
-    var tab = tabs[currentStep].getElementsByTagName("input");
+    var tabs = document.querySelector(".tab");
+    var tab = tabs[currentStep].querySelector("input");
 
     for (i = 0; i < tab.length; i++) {
         if (currentStep == 0) {
@@ -55,15 +55,15 @@ function validateForm() {
 
 function resetForm() {
     currentStep = 0;
-    document.getElementById("length").value = null;
-    document.getElementById("width").value = null;
-    document.getElementById("arrival_interval").value = null;
-    document.getElementById("type").value = "cold";
-    document.getElementById("radius").value = null;
+    document.querySelector("#length").value = null;
+    document.querySelector("#width").value = null;
+    document.querySelector("arrival_interval").value = null;
+    document.querySelector("#type").value = "cold";
+    document.querySelector("#radius").value = null;
 }
 
 function clamp(num, min, max) {
 	return Math.min(Math.max(num, min), max);
 }
 
-document.getElementById("nextBtn").addEventListener("click", nextStep);
+document.querySelector("#nextBtn").addEventListener("click", nextStep);

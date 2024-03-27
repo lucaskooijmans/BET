@@ -275,5 +275,5 @@ async function sendTruckAway(slot) {
 }
 
 for (let i = 0; i < 4; i++) {
-	document.getElementById("send" + i).addEventListener("click", function() {sendTruckAway(i)});
+	document.querySelector("#send" + i).addEventListener("click", function() {sendTruckAway(i)});
 }

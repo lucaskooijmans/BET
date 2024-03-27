@@ -19,7 +19,7 @@ function update() {
 
 // CANVAS //
 
-let canvas = document.getElementById("myCanvas");
+let canvas = document.querySelector("#myCanvas");
 let ctx = canvas.getContext("2d");
 let canvasWidth = 1200;
 let canvasHeight = 800;

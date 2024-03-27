@@ -88,9 +88,9 @@ class Hall {
 }
 
 function updateHallArrowButtons() {
-	let hallLeft = document.getElementById("hall-left-button");
-	let hallRight = document.getElementById("hall-right-button");
-	let hallText = document.getElementById("hall-identfier");
+	let hallLeft = document.querySelector("#hall-left-button");
+	let hallRight = document.querySelector("#hall-right-button");
+	let hallText = document.querySelector("#hall-identfier");
 	
 	hallLeft.disabled = currentHallId == 0;
 	hallRight.disabled = currentHallId == halls.length - 1;
@@ -106,7 +106,7 @@ async function updateHallTruckButtons() {
     });
 	
 	for (let i=0; i < 4; i++) {
-		let truckButton = document.getElementById("send" + i);
+		let truckButton = document.querySelector("#send" + i);
 		
 		if (i >= currentHall.trucks.length) {
 			truckButton.disabled = true;
@@ -158,5 +158,5 @@ for (let i=0; i < 2; i++) { // initialize 2 halls
 	createHall();
 }
 
-document.getElementById("hall-left-button").addEventListener("click", previousHall);
-document.getElementById("hall-right-button").addEventListener("click", nextHall);
+document.querySelector("#hall-left-button").addEventListener("click", previousHall);
+document.querySelector("#hall-right-button").addEventListener("click", nextHall);

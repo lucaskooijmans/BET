@@ -5,9 +5,9 @@ let condition = "";
 var currentCity = "";
 
 async function getWeatherInformation(city) {
-    let stadElement = document.getElementById("weerStad");
-    let gradenElement = document.getElementById("weerGraden");
-    let conditieElement = document.getElementById("weerConditie");
+    let stadElement = document.querySelector("#weerStad");
+    let gradenElement = document.querySelector("#weerGraden");
+    let conditieElement = document.querySelector("#weerConditie");
 
 	currentCity = city;
 
@@ -56,5 +56,5 @@ function searchCity() {
 window.onload = () => {
     getWeatherInformation("Amsterdam");
 	
-	document.getElementById("weather-button").addEventListener("click", searchCity);
+	document.querySelector("#weather-button").addEventListener("click", searchCity);
 } 
