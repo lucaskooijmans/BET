@@ -1,0 +1,22 @@
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+#form-container {
+    display: flex;
+}
+
+input, #length {
+    width: 2rem;
+    height: 1.3rem;
+    border-radius: 10px;
+}
+
+#submit-button {
+    width: 3.5rem;
+}
+.tab {
+}
+#navigation-buttons {
+    position: relative;
+}
