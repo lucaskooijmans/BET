@@ -3,7 +3,12 @@ const nextButton = document.querySelector('#next-button');
 const previousButton = document.querySelector('#previous-button');
 const submitButton = document.querySelector('#submit-button');
 const truckForm = document.querySelector('#truck-form');
+const lengthInput = truckForm.querySelector('#length');
+const widthInput = truckForm.querySelector('#width');
+const intervalInput = truckForm.querySelector('#interval');
+const typesSelect = truckForm.querySelector('#types');
 let currentTab = 0;
+let trucks = [];
 
 function switchTab(){
     const tabToHide = tabs[currentTab];
@@ -24,6 +29,11 @@ function switchTab(){
             window.alert("Please fill in a value!");
         }
     }
+    else
+    {
+        tabToShow = tabs[0];
+        currentTab = 0;
+    }
     tabToHide.classList.add('hidden');
     tabToShow.classList.remove('hidden');
 
@@ -37,6 +47,8 @@ function switchTab(){
         else if(currentTab === 0)
         {
             previousButton.classList.add('hidden');
+            nextButton.classList.remove('hidden');
+            submitButton.classList.add('hidden');
         }
         else{
             if(nextButton.classList.contains('hidden'))
@@ -58,6 +70,14 @@ function switchTab(){
 nextButton.addEventListener('click', switchTab);
 previousButton.addEventListener('click', switchTab);
 truckForm.onsubmit = function() {
-    console.log("Form has been submitted");
+    const truck = {
+        length: lengthInput,
+        width: widthInput,
+        interval: intervalInput,
+        type: typesSelect,
+    }
+    trucks.push(truck);
+
+    switchTab();
 }
 
