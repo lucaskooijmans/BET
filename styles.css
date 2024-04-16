@@ -20,3 +20,15 @@ input, #length {
 #navigation-buttons {
     position: relative;
 }
+.block {
+    border-style: solid;
+    width: 10rem;
+    height: 6rem;
+    border-radius: 1px;
+}
+.truck {
+    display: inline-grid;
+}
+.row {
+    display: flex;
+}

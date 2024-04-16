@@ -9,6 +9,7 @@ const intervalInput = truckForm.querySelector('#interval');
 const typesSelect = truckForm.querySelector('#types');
 let currentTab = 0;
 let trucks = [];
+const truckContainer = document.querySelector('#truck-container');
 
 function switchTab(){
     const tabToHide = tabs[currentTab];
@@ -71,13 +72,30 @@ nextButton.addEventListener('click', switchTab);
 previousButton.addEventListener('click', switchTab);
 truckForm.onsubmit = function() {
     const truck = {
-        length: lengthInput,
-        width: widthInput,
-        interval: intervalInput,
-        type: typesSelect,
+        length: lengthInput.value,
+        width: widthInput.value,
+        interval: intervalInput.value,
+        type: typesSelect.selected,
     }
     trucks.push(truck);
-
     switchTab();
+    let truckDiv = document.createElement('div');
+    truckDiv.id = `truck${trucks.length}`;
+    truckDiv.classList.add('truck');
+    console.log(`length: ${truck.length}|width: ${truck.width}|`);
+    for (let i = 0; i < truck.length; i++)
+    {
+        let row = document.createElement('div');
+        row.classList.add('block');
+        row.classList.add('row');
+        for(let j = 0; j < truck.width; j++)
+        {
+            let block = document.createElement('div');
+            block.classList.add('block');
+            row.append(block);
+        }
+        truckDiv.append(row)
+    }
+    truckContainer.append(truckDiv);
 }
 
