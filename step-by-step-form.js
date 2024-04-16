@@ -1,6 +1,7 @@
 const tabs = document.querySelectorAll('.tab');
 const nextButton = document.querySelector('#next-button');
 const previousButton = document.querySelector('#previous-button');
+const submitButton = document.querySelector('#submit-button');
 const truckForm = document.querySelector('#truck-form');
 let currentTab = 0;
 
@@ -25,31 +26,38 @@ function switchTab(){
     }
     tabToHide.classList.add('hidden');
     tabToShow.classList.remove('hidden');
-    console.log(`Current tab: ${currentTab}`)
 
-    if(currentTab + 1 === tabs.length)
+    function hideOrShowButtons()
     {
-        nextButton.classList.add('hidden');
-    }
-    else{
-        if(nextButton.classList.contains('hidden'))
+        if(currentTab + 1 === tabs.length)
         {
-            nextButton.classList.remove('hidden');
+            nextButton.classList.add('hidden');
+            submitButton.classList.remove('hidden');
+        }
+        else if(currentTab === 0)
+        {
+            previousButton.classList.add('hidden');
+        }
+        else{
+            if(nextButton.classList.contains('hidden'))
+            {
+                nextButton.classList.remove('hidden');
+            }
+            if(previousButton.classList.contains('hidden'))
+            {
+                previousButton.classList.remove('hidden');
+            }
+            if(!submitButton.classList.contains('hidden'))
+            {
+                submitButton.classList.add('hidden');
+            }
         }
     }
-
-    if(currentTab === 0)
-    {
-        previousButton.classList.add('hidden');
-    }
-    else {
-        if(previousButton.classList.contains('hidden'))
-        {
-            previousButton.classList.remove('hidden');
-        }
-    }
-
+    hideOrShowButtons();
 }
 nextButton.addEventListener('click', switchTab);
 previousButton.addEventListener('click', switchTab);
+truckForm.onsubmit = function() {
+    console.log("Form has been submitted");
+}
 
