@@ -1,6 +1,11 @@
 window.onload = function() {
-    let truckFormView = new TruckFormView();
-    let truckManager = new TruckManager();
-    let truckController = new TruckController(truckFormView, truckManager);
+    const truckFormView = new TruckFormView();
+    const truckManager = new TruckManager();
+    const truckController = new TruckController(truckFormView, truckManager);
     truckController.bindListeners();
+
+    const assemblyLineView = new AssemblyLineView();
+    const assemblyLineManager = new AssemblyLineManager();
+    const assemblyLineController = new AssemblyLineController(assemblyLineView, assemblyLineManager);
+    assemblyLineController.bindListeners();
 }
