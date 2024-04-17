@@ -1,50 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
 </head>
 <body>
-    <div id="form-container">
-        <form action="#" id="truck-form">
-            <div class="tab">
-                <label for="length">Length:</label>
-                <input id="length" type="number" min="0" max="5">
-            </div>
-            <div class="tab hidden">
-                <label for="width">Width:</label>
-                <input id="width" type="number" min="0" max="5">
-            </div>
-            <div class="tab hidden">
-                <label for="interval">Interval(in seconds):</label>
-                <input id="interval" type="number" min="0" max="255">
-            </div>
-            <div class="tab hidden">
-                <label for="types">Type:</label>
-                <select name="types" id="types">
-                    <option value="cold-transport">Cold Transport</option>
-                    <option value="fragile-transport">Fragile Transport</option>
-                    <option value="standard-transport">Standard Transport</option>
-                    <option value="pallets">Pallets</option>
-                    <option value="fast-delivery">Fast Delivery</option>
-                </select>
-            </div>
-            <input class="hidden" id="submit-button" type="submit" value="Submit">
-        </form>
-        <div id="navigation-buttons">
-            <button id="next-button">Next</button>
-            <button class="hidden" id="previous-button">Previous</button>
-        </div>
+    <div id="input-container">
+        <label for="length-input">Length:</label>
+        <input id="length-input">
+        <label for="width-input">Width:</label>
+        <input id="width-input">
+        <label for="interval-input">Interval:</label>
+        <input id="interval-input">
+        <label for="type-select">Type:</label>
+        <select id="type-select">
+            <option value="cold-transport">Cold Transport</option>
+            <option value="fragile-transport">Fragile Transport</option>
+            <option value="standard-transport">Standard Transport</option>
+            <option value="pallets">Pallets</option>
+            <option value="fast-shipping">Fast Shipping</option>
+        </select>
+        <button id="submit-button">Submit</button>
     </div>
-
     <div id="truck-container">
 
     </div>
 
-    <script src="step-by-step-form.js"></script>
+    <script src="index.js"></script>
+    <script src="Truck.js"></script>
+    <script src="TruckController.js"></script>
+    <script src="TruckFormView.js"></script>
+    <script src="TruckManager.js"></script>
 </body>
 </html>
