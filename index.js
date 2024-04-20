@@ -8,4 +8,8 @@ window.onload = function() {
     const assemblyLineManager = new AssemblyLineManager();
     const assemblyLineController = new AssemblyLineController(assemblyLineView, assemblyLineManager);
     assemblyLineController.bindListeners();
+
+    const shapeView = new ShapeView();
+    const shapeFactory = new ShapeFactory();
+    const shapeController = new ShapeController(shapeView, shapeFactory, assemblyLineManager);
 }

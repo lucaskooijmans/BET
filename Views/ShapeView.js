@@ -1,0 +1,4 @@
+class ShapeView {
+    constructor() {
+    }
+}

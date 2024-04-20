@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75169d85-f889-41ea-b4cf-4c036a6af650" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/Shape.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ShapeFactory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Truck.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Truck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/ShapeController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/ShapeView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/AssemblyLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AssemblyLine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +81,8 @@
       <workItem from="1713370675959" duration="5080000" />
       <workItem from="1713384182156" duration="601000" />
       <workItem from="1713539133174" duration="96000" />
-      <workItem from="1713551780498" duration="4177000" />
+      <workItem from="1713551780498" duration="4451000" />
+      <workItem from="1713613175191" duration="1838000" />
     </task>
     <servers />
   </component>
