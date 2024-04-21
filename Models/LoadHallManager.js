@@ -1,15 +1,21 @@
-class LoadHall {
+class LoadHallManager {
     constructor() {
         this.trucks = [];
-        this.conveyerbelts = [];
+        this.conveyerbelts = []; // TODO
     }
 
-    addTrucks(truck) {
+    addTruck(truck) {
         this.trucks.push(truck);
+        console.log('Added truck to loadhall');
     }
 
-    remove(truck) {
+    removeTruck(truck) {
         const index = this.trucks.indexOf(truck);
         return this.trucks.splice(index, 1);
     }
+
+    addConveyerBelt() { 
+
+    }
+
 }
