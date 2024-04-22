@@ -18,7 +18,6 @@ class TruckController {
         const typeSelect = document.querySelector('#type-select');
         const truck = new Truck(lengthInput.value, widthInput.value, intervalInput.value, typeSelect.value);
         this.truckManager.add(truck);
-        this.loadHallManager.addTruck(truck);
         this.truckFormView.renderTruck(truck.length, truck.width);
     }
 }
