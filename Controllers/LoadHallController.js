@@ -2,7 +2,6 @@ class LoadHallController {
     constructor(loadHallView, loadHallManager) {
         this.loadHallView = loadHallView;
         this.loadHallManager = loadHallManager;
-        this.loadHallId = 0;
     }
 
     createLoadHall() {
@@ -11,5 +10,9 @@ class LoadHallController {
 
         const loadHall = new LoadHall(this.loadHallId++, trucks, conveyerbelts);
         this.loadHallView.renderLoadHall(loadHall);
+    }
+
+    removeLoadHall() {
+        
     }
 }
