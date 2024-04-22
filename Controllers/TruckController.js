@@ -1,8 +1,9 @@
 
 class TruckController {
-    constructor(truckFormView, truckManager) {
+    constructor(truckFormView, truckManager, loadHallManager) {
         this.truckFormView = truckFormView;
         this.truckManager = truckManager;
+        this.loadHallManager = loadHallManager;
     }
 
     bindListeners() {
