@@ -1,15 +1,18 @@
 window.onload = function() {
+    const loadhallView = new LoadHallView();
+    const loadhallManager = new LoadHallManager();
+    const loadhallController = new LoadHallController(loadhallView, loadhallManager);
+    loadhallController.initializeLoadhalls();
+
     const truckFormView = new TruckFormView();
-    const truckManager = new TruckManager();
-    const truckController = new TruckController(truckFormView, truckManager);
+    const truckController = new TruckController(truckFormView, loadhallManager);
     truckController.bindListeners();
 
     const assemblyLineView = new AssemblyLineView();
-    const assemblyLineManager = new AssemblyLineManager();
-    const assemblyLineController = new AssemblyLineController(assemblyLineView, assemblyLineManager);
+    const assemblyLineController = new AssemblyLineController(assemblyLineView, loadhallManager);
     assemblyLineController.bindListeners();
 
     const shapeView = new ShapeView();
     const shapeFactory = new ShapeFactory();
-    const shapeController = new ShapeController(shapeView, shapeFactory, assemblyLineManager);
+    const shapeController = new ShapeController(shapeView, shapeFactory, loadhallManager);
 }

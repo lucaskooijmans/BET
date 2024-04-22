@@ -1,7 +1,7 @@
 class LoadHall {
-    constructor(trucks, conveyerbelts) {
-        this.trucks = trucks;
-        this.conveyerbelts = conveyerbelts; // TODO
+    constructor() {
+        this.trucks = [];
+        this.assemblyLines = [];
     }
 
     addTruck(truck) {
@@ -14,7 +14,12 @@ class LoadHall {
         return this.trucks.splice(index, 1);
     }
 
-    addConveyerBelt() { 
+    addAssemblyLine(assemblyLine) {
+        this.assemblyLines.push(assemblyLine);
+    }
 
+    removeAssemblyLine(assemblyLine) {
+        const index = this.assemblyLines.indexOf(assemblyLine);
+        return this.assemblyLines.splice(index, 1);
     }
 }

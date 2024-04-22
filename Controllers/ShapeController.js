@@ -1,9 +1,8 @@
 class ShapeController {
-    constructor(shapeView, shapeFactory, assemblyLineManager) {
+    constructor(shapeView, shapeFactory, loadhallManager) {
         this.shapeView = shapeView;
         this.shapeFactory = shapeFactory;
-        this.assemblyLineManager = assemblyLineManager;
-        this.startGenerating();
+        this.loadhallManager = loadhallManager;
     }
 
     startGenerating() {
@@ -12,8 +11,8 @@ class ShapeController {
 
     generateTetromino() {
         const tetromino = this.shapeFactory.createShape();
-        for(let i = 0; i < this.assemblyLineManager.assemblyLines.length; i++) {
-            this.assemblyLineManager.assemblyLines[i].addTetromino(tetromino);
+        for(let i = 0; i < this.loadhallManager.getCurrentLoadhall().assemblyLines.length; i++) {
+            this.loadhallManager.getCurrentLoadhall().assemblyLines[i].addTetromino(tetromino);
         }
     }
 }
