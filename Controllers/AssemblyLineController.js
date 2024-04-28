@@ -1,7 +1,7 @@
 class AssemblyLineController {
-    constructor(assemblyLineView, assemblyLineManager) {
+    constructor(assemblyLineView, loadhallManager) {
         this.assemblyLineView = assemblyLineView;
-        this.assemblyLineManager = assemblyLineManager;
+        this.loadhallmanager = loadhallManager;
     }
 
     bindListeners() {
@@ -11,8 +11,7 @@ class AssemblyLineController {
 
     createAssemblyLine() {
         const assemblyLine = new AssemblyLine();
-        this.assemblyLineManager.add(assemblyLine);
-
+        this.loadhallmanager.getCurrentLoadhall().addAssemblyLine(assemblyLine);
         this.assemblyLineView.renderNewAssemblyLine();
     }
 }
