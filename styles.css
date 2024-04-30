@@ -43,3 +43,15 @@ input{
 #assembly-line-container {
     display: flex;
 }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 15px);
+    grid-template-rows: repeat(20, 15px);
+    gap: 1px;
+    border: 1px solid #000;
+}
+
+.block {
+    width: 15px;
+    height: 15px;
+}

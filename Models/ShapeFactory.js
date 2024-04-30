@@ -5,24 +5,26 @@ class ShapeFactory {
     }
 
     createShape() {
-        let shape = this.shapes[Math.random() * this.shapes.length];
-        let color = this.colors[Math.random() * this.colors.length];
+        let shapeIndex = Math.floor(Math.random() * this.shapes.length)
+        console.log(shapeIndex);
+        let shape = this.shapes[shapeIndex];
+        let color = this.colors[Math.floor(Math.random() * this.colors.length)];
         let coords = [];
         switch(shape) {
             case 'straight':
-                coords = [[0, 0], [0, 1], [0, 2], [0, 3]];
+                coords = [[1,1], [2,1], [3,1], [4,1]];
                 break;
             case 'square':
-                coords = [[0,0], [0,1], [1,0], [1,0]];
+                coords = [[1,1], [1,2], [2,1], [2,2]];
                 break;
             case 'T':
-                coords = [[0,0], [0,1], [0,2], [1,1], [2,1]];
+                coords = [[1,1], [2,1], [3,1], [2,2]];
                 break;
             case 'L':
-                coords = [[0,0], [1,0], [2,0], [2,1], [2,2]];
+                coords = [[1,1], [1,2], [1,3], [2,3]];
                 break;
             case 'skew':
-                coords = [[0,0], [0,1], [1,1], [1,2]]
+                coords = [[1,1], [1,2], [2,2], [2,3]];
                 break;
         }
         return new Shape(coords, color);
