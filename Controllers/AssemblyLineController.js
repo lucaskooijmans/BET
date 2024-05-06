@@ -29,9 +29,12 @@ class AssemblyLineController {
     }
 
     generateTetrominos() {
-        const assemblyLines = document.querySelectorAll('.assemblyLine');
-        for (let i = 0; i < assemblyLines.length; i++) {
-            this.generateShape(assemblyLines[i]);
+        const assemblyLineNodes = document.querySelectorAll('.assemblyLine');
+        const currentLoadhall = this.loadhallmanager.getCurrentLoadhall();
+        for(let i = 0; i < currentLoadhall.assemblyLines.length; i++) {
+            if(currentLoadhall.assemblyLines[i].addTetromino()) {
+                this.generateShape(assemblyLineNodes[i]);
+            }
         }
     }
 }
