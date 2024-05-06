@@ -7,7 +7,9 @@ class AssemblyLine {
     addTetromino(tetromino) {
         if(this.queue.length < this.maxSize){
             this.queue.push(tetromino);
+            return true;
         }
+        return false;
     }
 
     popTetromino() {

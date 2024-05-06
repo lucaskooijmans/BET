@@ -3,6 +3,7 @@ class AssemblyLineController {
         this.assemblyLineView = assemblyLineView;
         this.loadhallmanager = loadhallManager;
         this.shapeFactory = shapeFactory;
+        setInterval(this.generateTetrominos.bind(this), 2000);
     }
 
     bindListeners() {
@@ -18,13 +19,19 @@ class AssemblyLineController {
         this.loadhallmanager.getCurrentLoadhall().addAssemblyLine(assemblyLine);
         this.assemblyLineView.renderNewAssemblyLine();
     }
-
-    generateShape() {
-        const shape = this.shapeFactory.createShape()
-        this.displayShape(shape);
+    displayShape(shape, assemblyLine) {
+        this.assemblyLineView.renderShape(shape.coords, shape.color, assemblyLine);
     }
 
-    displayShape(shape) {
-        this.assemblyLineView.renderShape(shape.coords, shape.color);
+    generateShape(assemblyLine) {
+        const shape = this.shapeFactory.createShape()
+        this.displayShape(shape, assemblyLine);
+    }
+
+    generateTetrominos() {
+        const assemblyLines = document.querySelectorAll('.assemblyLine');
+        for (let i = 0; i < assemblyLines.length; i++) {
+            this.generateShape(assemblyLines[i]);
+        }
     }
 }
