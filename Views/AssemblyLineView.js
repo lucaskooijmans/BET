@@ -26,7 +26,7 @@ class AssemblyLineView {
             block.style.gridRow = coord[1] + (amount * 1.4);
             block.style.gridColumn = coord[0];
             shapeContainer.append(block);
-            console.log("Addes shape");
+            console.log("Added shape");
         }
     }
 }
