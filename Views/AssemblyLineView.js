@@ -21,7 +21,7 @@ class AssemblyLineView {
         for(let i = 0; i < coords.length; i++){
             const coord = coords[i];
             const block = document.createElement('div');
-            block.classList.add('block');
+            block.classList.add('shapeBlock');
             block.style.backgroundColor = color;
             block.style.gridRow = coord[1] + (amount * 1.4);
             block.style.gridColumn = coord[0];
