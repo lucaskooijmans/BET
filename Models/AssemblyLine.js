@@ -2,6 +2,15 @@ class AssemblyLine {
     constructor() {
         this.queue = [];
         this.maxSize = 4;
+        this.truck = null;
+    }
+
+    assignTruck(truck) {
+        if (this.truck === null) {
+            this.truck = truck;
+            return true;
+        }
+        return false;
     }
 
     addTetromino(tetromino) {
