@@ -15,31 +15,43 @@ input{
 #submit-button {
     width: 3.5rem;
 }
-.tab {
-}
+
 #navigation-buttons {
     position: relative;
 }
-.block {
-    border-style: solid;
-    width: 10rem;
-    height: 5rem;
-    border-radius: 1px;
-}
+
 .truck {
     display: inline-grid;
+    margin: 1rem 5rem;
 }
+
 .row {
     display: flex;
 }
+
+#truck-assembly-line-container {
+    display: flex;
+}
+
 .assemblyLine {
     border-style: solid;
     width: 3rem;
-    height: 10rem;
     border-radius: 1px;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin: 1rem 5rem;
+    position: relative;
 }
-#assembly-line-container {
-    display: flex;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 15px);
+    grid-template-rows: repeat(20, 15px);
+    gap: 1px;
+    border: 1px solid #000;
+}
+
+.shapeBlock, .block {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    flex-shrink: 0;
 }

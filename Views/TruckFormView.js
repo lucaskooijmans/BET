@@ -4,8 +4,13 @@ class TruckFormView {
 
     renderTruck(length, width) {
         const truckDiv = document.createElement('div');
-        const truckContainer = document.querySelector('#truck-container');
+        // const truckContainer = document.querySelector('#truck-assembly-line-container');
         truckDiv.classList.add('truck');
+
+        const truckAssemblylines = document.querySelectorAll('.truck-assemblyline');
+
+        const trucks = document.querySelectorAll('.truck');
+
         for (let i = 0; i < length; i++)
         {
             let row = document.createElement('div');
@@ -19,6 +24,7 @@ class TruckFormView {
             }
             truckDiv.append(row)
         }
-        truckContainer.append(truckDiv);
+
+        truckAssemblylines[trucks.length].append(truckDiv);
     }
 }
