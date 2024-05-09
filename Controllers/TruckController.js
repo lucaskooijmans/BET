@@ -31,4 +31,11 @@ class TruckController {
             alert('Please create an assembly line first.');
         }
     }
+
+    getTruck() {
+        const assemblyLine = currentLoadhall.assemblyLines.find(line => line.truck === null);
+        if (assemblyLine) {
+            assemblyLine.getTruck();
+        }
+    }
 }

@@ -13,6 +13,10 @@ class AssemblyLine {
         return false;
     }
 
+    getTruck() {        
+        return this.truck;
+    }
+
     addTetromino(tetromino) {
         if(this.queue.length < this.maxSize){
             this.queue.push(tetromino);

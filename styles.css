@@ -22,13 +22,14 @@ input{
 
 .truck {
     display: inline-grid;
+    margin: 1rem 5rem;
 }
 
 .row {
     display: flex;
 }
 
-#assembly-line-container {
+#truck-assembly-line-container {
     display: flex;
 }
 

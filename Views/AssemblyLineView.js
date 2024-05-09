@@ -11,8 +11,12 @@ class AssemblyLineView {
         shapeContainer.classList.add('grid');
         assemblyLine.append(shapeContainer);
 
-        const assemblyLineContainer = document.querySelector('#assembly-line-container');
-        assemblyLineContainer.append(assemblyLine);
+        const truckAssemblyline = document.createElement('div');
+        truckAssemblyline.classList.add('truck-assemblyline');
+        truckAssemblyline.append(assemblyLine);
+
+        const truckAssemblyLineContainer = document.querySelector('#truck-assembly-line-container');
+        truckAssemblyLineContainer.append(truckAssemblyline);
     }
 
     renderShape(coords, color, assemblyLine) {
