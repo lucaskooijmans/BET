@@ -2,6 +2,7 @@ window.onload = function() {
     const loadhallView = new LoadHallView();
     const loadhallManager = new LoadHallManager();
     const loadhallController = new LoadHallController(loadhallView, loadhallManager);
+    loadhallManager.setController(loadhallController);
 
     // Create two LoadHalls
     const loadhall1 = new LoadHall();
@@ -28,7 +29,6 @@ window.onload = function() {
 
     const switchLoadhallButton = document.querySelector('#switch-loadhall-button');
     switchLoadhallButton.addEventListener('click', function() {
-        loadhallManager.switchLoadhall();
-        loadhallView.renderLoadHall(loadhallManager.getCurrentLoadhall());
+        loadhallController.switchLoadhall();
     });
 }

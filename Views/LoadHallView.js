@@ -1,15 +1,14 @@
 class LoadHallView {
-    constructor() {
-        
+    constructor(loadHall) {
+        this.loadHall = loadHall;
+        this.loadHallContainer = document.querySelector('#loadhall-container');
     }
 
-    renderLoadHall(loadHall) {
-        const loadHallContainer = document.querySelector('#loadhall-container');
-        loadHallContainer.innerHTML = ''; // Clear the container
-    
-        // Recreate the truck-assembly-line-container element
-        const truckAssemblyLineContainer = document.createElement('div');
-        truckAssemblyLineContainer.id = 'truck-assembly-line-container';
-        loadHallContainer.appendChild(truckAssemblyLineContainer);
+    hide() {
+        this.loadHallContainer.style.visibility = 'hidden';
+    }
+
+    show() {
+        this.loadHallContainer.style.visibility = 'visible';
     }
 }

@@ -2,6 +2,7 @@ class LoadHallManager {
     constructor() {
         this.loadhalls = [];
         this.currentLoadhall = 1;
+        this.loadHallController;
     }
 
     addLoadhall(loadhall) {
@@ -18,12 +19,20 @@ class LoadHallManager {
     }
 
     switchLoadhall() {
-        console.log(this.currentLoadhall)
-        if (this.currentLoadhall == 0) {
-            this.currentLoadhall = 1;
-        }
-        else {
+        // // Switch to the other LoadHall
+        // this.currentLoadhall = (this.currentLoadhall + 1) % this.loadhalls.length;
+
+        console.log(this.loadhalls);
+
+        if(this.currentLoadhall == 1) {
             this.currentLoadhall = 0;
         }
+        else {
+            this.currentLoadhall = 1;
+        }
+    }
+
+    setController(controller) {
+        this.loadHallController = controller;
     }
 }
