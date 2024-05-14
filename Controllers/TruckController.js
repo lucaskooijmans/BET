@@ -8,19 +8,34 @@ class TruckController {
 
     bindListeners() {
         const nextButton1 = document.querySelector('#next-button-1');
-        nextButton1.addEventListener('click', () => this.nextStep());
+        nextButton1.addEventListener('click', () => {
+            const lengthInput = document.querySelector('#length-input');
+            if (this.validateInput(lengthInput.value)) {
+                this.nextStep();
+            }
+        });
 
         const prevButton1 = document.querySelector('#prev-button-1');
         prevButton1.addEventListener('click', () => this.prevStep());
 
         const nextButton2 = document.querySelector('#next-button-2');
-        nextButton2.addEventListener('click', () => this.nextStep());
+        nextButton2.addEventListener('click', () => {
+            const widthInput = document.querySelector('#width-input');
+            if (this.validateInput(widthInput.value)) {
+                this.nextStep();
+            }
+        });
 
         const prevButton2 = document.querySelector('#prev-button-2');
         prevButton2.addEventListener('click', () => this.prevStep());
 
         const nextButton3 = document.querySelector('#next-button-3');
-        nextButton3.addEventListener('click', () => this.nextStep());
+        nextButton3.addEventListener('click', () => {
+            const intervalInput = document.querySelector('#interval-input');
+            if (this.validateInput(intervalInput.value)) {
+                this.nextStep();
+            }
+        });
 
         const prevButton3 = document.querySelector('#prev-button-3');
         prevButton3.addEventListener('click', () => this.prevStep());
@@ -70,6 +85,14 @@ class TruckController {
             }
         });
         this.currentStep = 0;
+    }
+
+    validateInput(value) {
+        if (value > 10) {
+            alert('Input cannot be greater than 10');
+            return false;
+        }
+        return true;
     }
 
     createTruck() {
