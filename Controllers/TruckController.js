@@ -3,11 +3,73 @@ class TruckController {
     constructor(truckFormView, loadHallManager) {
         this.truckFormView = truckFormView;
         this.loadHallManager = loadHallManager;
+        this.currentStep = 0;
     }
 
     bindListeners() {
+        const nextButton1 = document.querySelector('#next-button-1');
+        nextButton1.addEventListener('click', () => this.nextStep());
+
+        const prevButton1 = document.querySelector('#prev-button-1');
+        prevButton1.addEventListener('click', () => this.prevStep());
+
+        const nextButton2 = document.querySelector('#next-button-2');
+        nextButton2.addEventListener('click', () => this.nextStep());
+
+        const prevButton2 = document.querySelector('#prev-button-2');
+        prevButton2.addEventListener('click', () => this.prevStep());
+
+        const nextButton3 = document.querySelector('#next-button-3');
+        nextButton3.addEventListener('click', () => this.nextStep());
+
+        const prevButton3 = document.querySelector('#prev-button-3');
+        prevButton3.addEventListener('click', () => this.prevStep());
+
         const submitButton = document.querySelector('#submit-button');
-        submitButton.addEventListener('click', () => this.createTruck())
+        submitButton.addEventListener('click', () => {
+            this.createTruck();
+            this.resetForm();
+        });
+    }
+
+    nextStep() {
+        const formSteps = document.querySelectorAll('.form-step');
+        formSteps[this.currentStep].classList.add('hidden');
+        this.currentStep++;
+        formSteps[this.currentStep].classList.remove('hidden');
+    }
+
+    prevStep() {
+        const formSteps = document.querySelectorAll('.form-step');
+        formSteps[this.currentStep].classList.add('hidden');
+        this.currentStep--;
+        formSteps[this.currentStep].classList.remove('hidden');
+    }
+
+    resetForm() {
+        // Clear inputs
+        const lengthInput = document.querySelector('#length-input');
+        lengthInput.value = '';
+
+        const widthInput = document.querySelector('#width-input');
+        widthInput.value = '';
+
+        const intervalInput = document.querySelector('#interval-input');
+        intervalInput.value = '';
+
+        const typeSelect = document.querySelector('#type-select');
+        typeSelect.selectedIndex = 0;
+
+        // Reset form steps
+        const formSteps = document.querySelectorAll('.form-step');
+        formSteps.forEach((step, index) => {
+            if (index === 0) {
+                step.classList.remove('hidden');
+            } else {
+                step.classList.add('hidden');
+            }
+        });
+        this.currentStep = 0;
     }
 
     createTruck() {
