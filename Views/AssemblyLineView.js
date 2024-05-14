@@ -3,7 +3,6 @@ class AssemblyLineView {
     }
 
     renderNewAssemblyLine() {
-        
         const assemblyLine = document.createElement('div');
         assemblyLine.classList.add('assemblyLine');
 
