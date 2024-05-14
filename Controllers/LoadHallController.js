@@ -3,6 +3,7 @@ class LoadHallController {
         this.loadHallView = loadHallView;
         this.loadHallManager = loadHallManager;
         this.loadHallViews = new Map(); // Map to store LoadHall to LoadHallView associations
+        this.savedContent = new Map(); // Map to store saved content for each LoadHall
     }
 
     initializeLoadhalls() {
@@ -21,23 +22,30 @@ class LoadHallController {
     }
 
     switchLoadhall() {
-        // Get the current LoadHallView
-        const currentLoadhallView = this.getLoadhallView(this.loadHallManager.getCurrentLoadhall());
-        
-        // Hide the current LoadHall
-        currentLoadhallView.hide();
+        // Get the current LoadHall
+        const currentLoadhall = this.loadHallManager.getCurrentLoadhall();
 
-        // Clear the truck-assembly-line-container div
+        // Get the current LoadHallView
+        const currentLoadhallView = this.getLoadhallView(currentLoadhall);
+
+        // Save the current content of the truck-assembly-line-container div
         const truckAssemblyLineContainer = document.querySelector('#truck-assembly-line-container');
-        truckAssemblyLineContainer.innerHTML = '';
+        this.savedContent.set(currentLoadhall, truckAssemblyLineContainer.innerHTML);
 
         // Switch to the other LoadHall
         this.loadHallManager.switchLoadhall();
 
-        // Get the new LoadHallView
-        const newLoadhallView = this.getLoadhallView(this.loadHallManager.getCurrentLoadhall());
+        // Get the new LoadHall
+        const newLoadhall = this.loadHallManager.getCurrentLoadhall();
 
-        // Show the new LoadHall
-        newLoadhallView.show();
+        // Get the new LoadHallView
+        const newLoadhallView = this.getLoadhallView(newLoadhall);
+
+        // Restore the saved content for the new LoadHall, if any
+        if (this.savedContent.has(newLoadhall)) {
+            truckAssemblyLineContainer.innerHTML = this.savedContent.get(newLoadhall);
+        } else {
+            truckAssemblyLineContainer.innerHTML = '';
+        }
     }
 }
