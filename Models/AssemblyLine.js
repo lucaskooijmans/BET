@@ -1,7 +1,7 @@
 class AssemblyLine {
     constructor() {
         this.queue = [];
-        this.maxSize = 4;
+        this.maxSize = 5;
         this.truck = null;
     }
 

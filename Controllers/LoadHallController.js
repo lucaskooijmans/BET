@@ -6,8 +6,8 @@ class LoadHallController {
     }
 
     initializeLoadhalls() {
-        this.loadHallManager.addLoadhall(new LoadHall());
-        this.loadHallManager.addLoadhall(new LoadHall());
+        this.loadHallManager.addLoadhall(new LoadHall(1));
+        this.loadHallManager.addLoadhall(new LoadHall(2));
         // Initialize LoadHallView for each LoadHall and store it in the map
         this.loadHallManager.loadhalls.forEach(loadhall => {
             const loadhallView = new LoadHallView(loadhall);
@@ -24,8 +24,11 @@ class LoadHallController {
         // Get the current LoadHallView
         const currentLoadhallView = this.getLoadhallView(this.loadHallManager.getCurrentLoadhall());
 
+        console.log(currentLoadhallView)
         // Hide the current LoadHall
         currentLoadhallView.hide();
+
+        console.log(currentLoadhallView)
 
         // Switch to the other LoadHall
         this.loadHallManager.switchLoadhall();

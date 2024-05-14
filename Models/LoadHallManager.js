@@ -9,27 +9,20 @@ class LoadHallManager {
         this.loadhalls.push(loadhall);
     }
 
-    removeLoadhall(loadhall) {
-        const index = this.loadhalls.indexOf(loadhall);
-        return this.loadhalls.splice(index, 1);
-    }
-
     getCurrentLoadhall() {
-        return this.loadhalls[this.currentLoadhall];
+        return this.loadhalls[this.currentLoadhall+1]; // +1 because the first 2 in the array are undefined?
     }
 
     switchLoadhall() {
-        // // Switch to the other LoadHall
-        // this.currentLoadhall = (this.currentLoadhall + 1) % this.loadhalls.length;
-
-        console.log(this.loadhalls);
-
         if(this.currentLoadhall == 1) {
-            this.currentLoadhall = 0;
+            this.currentLoadhall = 2;
         }
         else {
             this.currentLoadhall = 1;
         }
+        
+        console.log(this.loadhalls)
+        console.log(this.currentLoadhall)
     }
 
     setController(controller) {
