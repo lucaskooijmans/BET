@@ -23,12 +23,13 @@ class LoadHallController {
     switchLoadhall() {
         // Get the current LoadHallView
         const currentLoadhallView = this.getLoadhallView(this.loadHallManager.getCurrentLoadhall());
-
-        console.log(currentLoadhallView)
+        
         // Hide the current LoadHall
         currentLoadhallView.hide();
 
-        console.log(currentLoadhallView)
+        // Clear the truck-assembly-line-container div
+        const truckAssemblyLineContainer = document.querySelector('#truck-assembly-line-container');
+        truckAssemblyLineContainer.innerHTML = '';
 
         // Switch to the other LoadHall
         this.loadHallManager.switchLoadhall();
