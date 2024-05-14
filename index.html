@@ -7,22 +7,37 @@
 </head>
 <body>
     <div id="input-container">
-        <label for="length-input">Length:</label>
-        <input id="length-input">
-        <label for="width-input">Width:</label>
-        <input id="width-input">
-        <label for="interval-input">Interval:</label>
-        <input id="interval-input">
-        <label for="type-select">Type:</label>
-        <select id="type-select">
-            <option value="cold-transport">Cold Transport</option>
-            <option value="fragile-transport">Fragile Transport</option>
-            <option value="standard-transport">Standard Transport</option>
-            <option value="pallets">Pallets</option>
-            <option value="fast-shipping">Fast Shipping</option>
-        </select>
-        <button id="submit-button">Submit</button>
+        <div class="form-step">
+            <label for="length-input">Length:</label>
+            <input id="length-input">
+            <button id="next-button-1">Next</button>
+        </div>
+        <div class="form-step hidden">
+            <label for="width-input">Width:</label>
+            <input id="width-input">
+            <button id="prev-button-1">Previous</button>
+            <button id="next-button-2">Next</button>
+        </div>
+        <div class="form-step hidden">
+            <label for="interval-input">Interval:</label>
+            <input id="interval-input">
+            <button id="prev-button-2">Previous</button>
+            <button id="next-button-3">Next</button>
+        </div>
+        <div class="form-step hidden">
+            <label for="type-select">Type:</label>
+            <select id="type-select">
+                <option value="cold-transport">Cold Transport</option>
+                <option value="fragile-transport">Fragile Transport</option>
+                <option value="standard-transport">Standard Transport</option>
+                <option value="pallets">Pallets</option>
+                <option value="fast-shipping">Fast Shipping</option>
+            </select>
+            <button id="prev-button-3">Previous</button>
+            <button id="submit-button">Submit</button>
+        </div>
     </div>
+
     <button id="assembly-line-button">Create Assembly Line</button>
     <button id="create-shape-button">Create Shape</button>
     
