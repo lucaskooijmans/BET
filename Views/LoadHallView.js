@@ -1,9 +1,6 @@
 class LoadHallView {
-    constructor() {
-        
-    }
-
-    renderLoadHall(loadHall) {
-        const loadHallContainer = document.querySelector('#loadhall-container');
+    constructor(loadHall) {
+        this.loadHall = loadHall;
+        this.loadHallContainer = document.querySelector('#loadhall-container');
     }
 }

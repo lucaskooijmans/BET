@@ -2,6 +2,17 @@ window.onload = function() {
     const loadhallView = new LoadHallView();
     const loadhallManager = new LoadHallManager();
     const loadhallController = new LoadHallController(loadhallView, loadhallManager);
+    loadhallManager.setController(loadhallController);
+
+    // Create two LoadHalls
+    const loadhall1 = new LoadHall();
+    const loadhall2 = new LoadHall();
+
+    // Add the LoadHalls to the LoadHallManager
+    loadhallManager.addLoadhall(loadhall1);
+    loadhallManager.addLoadhall(loadhall2);
+
+    // Initialize LoadHalls
     loadhallController.initializeLoadhalls();
 
     const truckFormView = new TruckFormView();
@@ -15,4 +26,9 @@ window.onload = function() {
     const assemblyLineView = new AssemblyLineView();
     const assemblyLineController = new AssemblyLineController(assemblyLineView, loadhallManager, shapeFactory);
     assemblyLineController.bindListeners();
+
+    const switchLoadhallButton = document.querySelector('#switch-loadhall-button');
+    switchLoadhallButton.addEventListener('click', function() {
+        loadhallController.switchLoadhall();
+    });
 }

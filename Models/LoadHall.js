@@ -1,5 +1,6 @@
 class LoadHall {
-    constructor() {
+    constructor(id) {
+        this.id = id;
         this.trucks = [];
         this.assemblyLines = [];
     }
@@ -7,11 +8,6 @@ class LoadHall {
     addTruck(truck) {
         this.trucks.push(truck);
         console.log('Added truck to loadhall');
-    }
-
-    removeTruck(truck) {
-        const index = this.trucks.indexOf(truck);
-        return this.trucks.splice(index, 1);
     }
 
     addAssemblyLine(assemblyLine) {

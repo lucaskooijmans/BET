@@ -2,18 +2,30 @@ class LoadHallManager {
     constructor() {
         this.loadhalls = [];
         this.currentLoadhall = 1;
+        this.loadHallController;
     }
 
     addLoadhall(loadhall) {
         this.loadhalls.push(loadhall);
     }
 
-    removeLoadhall(loadhall) {
-        const index = this.loadhalls.indexOf(loadhall);
-        return this.loadhalls.splice(index, 1);
+    getCurrentLoadhall() {
+        return this.loadhalls[this.currentLoadhall+1]; // +1 because the first 2 in the array are undefined?
     }
 
-    getCurrentLoadhall() {
-        return this.loadhalls[this.currentLoadhall];
+    switchLoadhall() {
+        if(this.currentLoadhall == 1) {
+            this.currentLoadhall = 2;
+        }
+        else {
+            this.currentLoadhall = 1;
+        }
+        
+        console.log(this.loadhalls)
+        console.log(this.currentLoadhall)
+    }
+
+    setController(controller) {
+        this.loadHallController = controller;
     }
 }

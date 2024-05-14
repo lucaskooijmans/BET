@@ -16,6 +16,7 @@ class TruckFormView {
             let row = document.createElement('div');
             row.classList.add('block');
             row.classList.add('row');
+            row.classList.add('row-border');
             for(let j = 0; j < width; j++)
             {
                 let block = document.createElement('div');
