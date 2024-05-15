@@ -1,5 +1,6 @@
 class TruckFormView {
     constructor() {
+        this.interval = 1;
     }
 
     renderTruck(length, width) {
@@ -27,5 +28,50 @@ class TruckFormView {
         }
 
         truckAssemblylines[trucks.length].append(truckDiv);
+
+        // Add a button for sending the truck away
+        const button = document.createElement('button');
+        button.textContent = 'Send Truck';
+        button.addEventListener('click', () => {
+            this.sendTruck(truckDiv);
+        });
+
+        // Append the button to the truck element
+        truckDiv.appendChild(button);
+    }
+
+    sendTruck(truck) {
+        console.log('Sending truck');
+        console.log(this.interval)
+    
+        // Remove any existing animation classes
+        truck.classList.remove('send-away', 'come-back');
+    
+        // Define the animationend event handler
+        const onAnimationEnd = (event) => {
+            if (event.animationName === 'send-away') {
+                truck.classList.remove('send-away');
+                setTimeout(() => {
+                    truck.classList.add('come-back');
+                }, this.interval);
+            } else if (event.animationName === 'come-back') {
+                truck.classList.remove('come-back');
+                // Remove the event listener after the come-back animation ends
+                truck.removeEventListener('animationend', onAnimationEnd);
+            }
+        };
+    
+        // Remove the existing animationend event listener
+        truck.removeEventListener('animationend', onAnimationEnd);
+    
+        // Add the animationend event listener
+        truck.addEventListener('animationend', onAnimationEnd);
+    
+        // Apply the 'send-away' CSS class to animate the truck going away
+        truck.classList.add('send-away');
+    }
+
+    setInterval(interval) {
+        this.interval = interval;
     }
 }

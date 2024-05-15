@@ -61,3 +61,21 @@ input{
 .row-border {
     border: 0;
 }
+
+.send-away {
+    animation: send-away 1s forwards;
+}
+
+.come-back {
+    animation: come-back 1s forwards;
+}
+
+@keyframes send-away {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes come-back {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(0); }
+}
