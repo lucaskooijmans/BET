@@ -40,35 +40,33 @@ class TruckFormView {
         truckDiv.appendChild(button);
     }
 
+    delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     sendTruck(truck) {
+        
+
         console.log('Sending truck');
         console.log(this.interval)
     
         // Remove any existing animation classes
         truck.classList.remove('send-away', 'come-back');
     
-        // Define the animationend event handler
-        const onAnimationEnd = (event) => {
-            if (event.animationName === 'send-away') {
-                truck.classList.remove('send-away');
-                setTimeout(() => {
-                    truck.classList.add('come-back');
-                }, this.interval);
-            } else if (event.animationName === 'come-back') {
-                truck.classList.remove('come-back');
-                // Remove the event listener after the come-back animation ends
-                truck.removeEventListener('animationend', onAnimationEnd);
-            }
-        };
-    
-        // Remove the existing animationend event listener
-        truck.removeEventListener('animationend', onAnimationEnd);
-    
-        // Add the animationend event listener
-        truck.addEventListener('animationend', onAnimationEnd);
-    
         // Apply the 'send-away' CSS class to animate the truck going away
         truck.classList.add('send-away');
+
+        // Define the animationiteration event handler
+        const onAnimationEnd = async () => {
+            console.log('hello 1')
+            await this.delay(this.interval * 1000);
+            truck.classList.remove('send-away');
+            truck.classList.add('come-back');
+            console.log('hello 2')
+        };
+
+        // Add the animationiteration event listener
+        truck.addEventListener('animationend', onAnimationEnd);
     }
 
     setInterval(interval) {
