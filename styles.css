@@ -71,10 +71,29 @@ input{
     border: 0;
 }
 
+.send-away {
+    animation: send-away 2s forwards;
+}
+
+.come-back {
+    animation: come-back 2s forwards;
+}
+
+@keyframes send-away {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes come-back {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(0); }
+}
+
 .shape {
     position: relative;
     display: inline-grid;
 }
 
 .assemblyLineGrid {
+  
 }
