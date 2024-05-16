@@ -49,13 +49,22 @@ input{
     gap: 1px;
     border: 1px solid #000;
     height: 250px;
+    position: relative;
 }
 
-.shapeBlock, .block {
+.block {
     width: 15px;
     height: 15px;
     border: 1px solid #000;
     flex-shrink: 0;
+    position: relative;
+}
+.shapeBlock{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+    position: relative;
 }
 
 .row-border {
@@ -63,9 +72,9 @@ input{
 }
 
 .shape {
-    position: absolute;
+    position: relative;
+    display: inline-grid;
 }
 
 .assemblyLineGrid {
-
 }
