@@ -50,8 +50,8 @@ class AssemblyLineView {
     startDrag(event) {
         this.activePiece = event.target.parentElement;
         this.activePiece.classList.add('dragging');
-        this.activePieceX = this.activePiece.clientX;
-        this.activePieceY = this.activePiece.clientY;
+        this.activePieceX = this.activePiece.style.top;
+        this.activePieceY = this.activePiece.style.left;
         event.stopPropagation(); // Prevent event bubbling
         this.dragStartX = event.clientX;
         this.dragStartY = event.clientY;
@@ -94,44 +94,15 @@ class AssemblyLineView {
                             block1.y + block1.height >= block2.y &&
                             block1.y <= block2.y + block2.height) {
                             console.log("Collision detected!");
-                            // Je kunt hier een break gebruiken als je alleen de eerste botsing wilt detecteren.
+                            collision = true;
                         }
                     }
                 }
             }
-
-        // if (collision) {
-        //     this.activePiece.style.left = `${this.activePieceX}px`
-        //     this.activePiece.style.top = `${this.activePieceY}px`
-        // }
-
-        // let collision = false;
-        // document.removeEventListener('mousemove', this.dragPiece);
-        // for (let i = 0; i < this.shapes.length; i++) {
-        //     for (let j = i + 1; j < this.shapes.length; j++) {
-        //         const rect1 = this.shapes[i].getBoundingClientRect();
-        //         const rect2 = this.shapes[j].getBoundingClientRect();
-        //
-        //         if (rect1.right >= rect2.left &&
-        //             rect1.left <= rect2.right &&
-        //             rect1.bottom >= rect2.top &&
-        //             rect1.top <= rect2.bottom)
-        //         {
-        //             collision = true;
-        //             console.log("Collision detected!")
-        //         }
-        //     }
-        // }
-        // if(!collision)
-        // {
-        //     this.shapes.push(this.activePiece);
-        // }
-        // else
-        // {
-        //     this.activePiece.style.left = this.activePieceX;
-        //     this.activePiece.style.top = this.activePieceY;
-        // }
-        // this.activePiece = null;
+            if(collision){
+                this.activePiece.style.left = this.activePieceX;
+                this.activePiece.style.top = this.activePieceY;
+            }
     }
 
 
