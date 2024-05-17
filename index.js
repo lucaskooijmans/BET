@@ -1,4 +1,33 @@
 window.onload = function() {
+    const apiKey = 'bf56484408341784d4cba93d5d445abb';
+
+    async function getWeather(city) {
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+        const weatherData = await response.json();
+        return weatherData;
+    }
+
+    function displayWeather(city) {
+        getWeather(city).then(data => {
+            const weatherInfo = document.querySelector('#weather-info');
+            weatherInfo.innerHTML = `Temperature: ${data.main.temp}°C<br>Weather: ${data.weather[0].main}<br>Wind Speed: ${data.wind.speed} m/s<br><br>`;
+
+            const weather = {
+                rain: data.weather[0].main === 'Rain',
+                snow: data.weather[0].main === 'Snow',
+                temperature: data.main.temp,
+                windSpeed: data.wind.speed
+            };
+    
+            truckController.updateWeather(weather);
+        });
+    }
+
+    const citySelect = document.querySelector('#city-select');
+    citySelect.addEventListener('change', () => {
+        displayWeather(citySelect.value);
+    });
+
     const loadhallView = new LoadHallView();
     const loadhallManager = new LoadHallManager();
     const loadhallController = new LoadHallController(loadhallView, loadhallManager);
@@ -17,6 +46,8 @@ window.onload = function() {
 
     const truckFormView = new TruckFormView();
     const truckController = new TruckController(truckFormView, loadhallManager);
+    truckFormView.setController(truckController);
+
     truckController.bindListeners();
 
     const shapeView = new ShapeView();

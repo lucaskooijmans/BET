@@ -6,6 +6,29 @@ class TruckController {
         this.currentStep = 0;
     }
 
+    updateWeather(weather) {
+        this.truckFormView.updateWeather(weather);
+    }
+
+    canSendTruck(type, weather) {
+        console.log('canSendTruck')
+        console.log(type)
+
+        if (type === 'fragile-transport' && (weather.rain || weather.snow)) {
+            alert('Fragile transport trucks cannot be sent in rain or snow.');
+            return false;
+        }
+        if (type === 'cold-transport' && weather.temperature > 35) {
+            alert('Cold transport trucks cannot be sent when the temperature is above 35 celsius.');
+            return false;
+        }
+        if (type === 'pallets' && weather.windSpeed > 4.00) {
+            alert('Trucks with pallets cannot be sent when the wind speed is above 4.00 m/s.');
+            return false;
+        }
+        return true;
+    }
+
     bindListeners() {
         const nextButton1 = document.querySelector('#next-button-1');
         nextButton1.addEventListener('click', () => {
@@ -111,7 +134,7 @@ class TruckController {
             if (assemblyLine) {
                 assemblyLine.assignTruck(truck);
                 currentLoadhall.addTruck(truck);
-                this.truckFormView.renderTruck(truck.length, truck.width);
+                this.truckFormView.renderTruck(truck.length, truck.width, truck.type);
             } else {
                 alert('All assembly lines have a truck assigned. Please create a new assembly line.');
             }
