@@ -1,9 +1,20 @@
 class TruckFormView {
     constructor() {
         this.interval = 1;
+        this.truckController = null;
+        this.weather = {
+            rain: false,
+            snow: false,
+            temperature: 0,
+            windSpeed: 0
+        };
     }
 
-    renderTruck(length, width) {
+    updateWeather(weather) {
+        this.weather = weather;
+    }
+
+    renderTruck(length, width, type) {
         const truckDiv = document.createElement('div');
         // const truckContainer = document.querySelector('#truck-assembly-line-container');
         truckDiv.classList.add('truck');
@@ -33,7 +44,7 @@ class TruckFormView {
         const button = document.createElement('button');
         button.textContent = 'Send Truck';
         button.addEventListener('click', () => {
-            this.sendTruck(truckDiv);
+            this.sendTruck(truckDiv, type);
         });
 
         // Append the button to the truck element
@@ -44,11 +55,15 @@ class TruckFormView {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    sendTruck(truck) {
-        
-
-        console.log('Sending truck');
+    sendTruck(truck, type) {
+        console.log('Sending truck')
         console.log(this.interval)
+        console.log(this.weather)
+
+        // Check if the truck can be sent
+        if (!this.truckController.canSendTruck(type, this.weather)) {
+            return;
+        }
     
         // Remove any existing animation classes
         truck.classList.remove('send-away', 'come-back');
@@ -71,5 +86,9 @@ class TruckFormView {
 
     setInterval(interval) {
         this.interval = interval;
+    }
+
+    setController(controller) {
+        this.truckController = controller;
     }
 }

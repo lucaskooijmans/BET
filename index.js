@@ -11,6 +11,15 @@ window.onload = function() {
         getWeather(city).then(data => {
             const weatherInfo = document.querySelector('#weather-info');
             weatherInfo.innerHTML = `Temperature: ${data.main.temp}°C<br>Weather: ${data.weather[0].main}<br>Wind Speed: ${data.wind.speed} m/s<br><br>`;
+
+            const weather = {
+                rain: data.weather[0].main === 'Rain',
+                snow: data.weather[0].main === 'Snow',
+                temperature: data.main.temp,
+                windSpeed: data.wind.speed
+            };
+    
+            truckController.updateWeather(weather);
         });
     }
 
@@ -37,6 +46,8 @@ window.onload = function() {
 
     const truckFormView = new TruckFormView();
     const truckController = new TruckController(truckFormView, loadhallManager);
+    truckFormView.setController(truckController);
+
     truckController.bindListeners();
 
     const shapeView = new ShapeView();
