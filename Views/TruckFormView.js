@@ -1,6 +1,5 @@
 class TruckFormView {
     constructor() {
-        this.interval = 1;
         this.truckController = null;
         this.weather = {
             rain: false,
@@ -14,7 +13,7 @@ class TruckFormView {
         this.weather = weather;
     }
 
-    renderTruck(length, width, type) {
+    renderTruck(length, width, type, interval) {
         const truckDiv = document.createElement('div');
         // const truckContainer = document.querySelector('#truck-assembly-line-container');
         truckDiv.classList.add('truck');
@@ -44,7 +43,7 @@ class TruckFormView {
         const button = document.createElement('button');
         button.textContent = 'Send Truck';
         button.addEventListener('click', () => {
-            this.sendTruck(truckDiv, type);
+            this.sendTruck(truckDiv, type, interval);
         });
 
         // Append the button to the truck element
@@ -55,9 +54,9 @@ class TruckFormView {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    sendTruck(truck, type) {
+    sendTruck(truck, type, interval) {
         console.log('Sending truck')
-        console.log(this.interval)
+        console.log(interval)
         console.log(this.weather)
 
         // Check if the truck can be sent
@@ -74,7 +73,7 @@ class TruckFormView {
         // Define the animationiteration event handler
         const onAnimationEnd = async () => {
             console.log('hello 1')
-            await this.delay(this.interval * 1000);
+            await this.delay(interval * 1000);
             truck.classList.remove('send-away');
             truck.classList.add('come-back');
             console.log('hello 2')
@@ -82,10 +81,6 @@ class TruckFormView {
 
         // Add the animationiteration event listener
         truck.addEventListener('animationend', onAnimationEnd);
-    }
-
-    setInterval(interval) {
-        this.interval = interval;
     }
 
     setController(controller) {
