@@ -1,9 +1,19 @@
 class TruckFormView {
     constructor() {
-        this.interval = 1;
+        this.truckController = null;
+        this.weather = {
+            rain: false,
+            snow: false,
+            temperature: 0,
+            windSpeed: 0
+        };
     }
 
-    renderTruck(length, width) {
+    updateWeather(weather) {
+        this.weather = weather;
+    }
+
+    renderTruck(length, width, type, interval) {
         const truckDiv = document.createElement('div');
         // const truckContainer = document.querySelector('#truck-assembly-line-container');
         truckDiv.classList.add('truck');
@@ -33,7 +43,7 @@ class TruckFormView {
         const button = document.createElement('button');
         button.textContent = 'Send Truck';
         button.addEventListener('click', () => {
-            this.sendTruck(truckDiv);
+            this.sendTruck(truckDiv, type, interval);
         });
 
         // Append the button to the truck element
@@ -44,11 +54,15 @@ class TruckFormView {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    sendTruck(truck) {
-        
+    sendTruck(truck, type, interval) {
+        console.log('Sending truck')
+        console.log(interval)
+        console.log(this.weather)
 
-        console.log('Sending truck');
-        console.log(this.interval)
+        // Check if the truck can be sent
+        if (!this.truckController.canSendTruck(type, this.weather)) {
+            return;
+        }
     
         // Remove any existing animation classes
         truck.classList.remove('send-away', 'come-back');
@@ -59,7 +73,7 @@ class TruckFormView {
         // Define the animationiteration event handler
         const onAnimationEnd = async () => {
             console.log('hello 1')
-            await this.delay(this.interval * 1000);
+            await this.delay(interval * 1000);
             truck.classList.remove('send-away');
             truck.classList.add('come-back');
             console.log('hello 2')
@@ -69,7 +83,7 @@ class TruckFormView {
         truck.addEventListener('animationend', onAnimationEnd);
     }
 
-    setInterval(interval) {
-        this.interval = interval;
+    setController(controller) {
+        this.truckController = controller;
     }
 }

@@ -38,6 +38,10 @@ class LoadHallController {
         // Get the new LoadHall
         const newLoadhall = this.loadHallManager.getCurrentLoadhall();
 
+        // Update the current-loadhall div with the new LoadHall
+        const currentLoadhallDiv = document.querySelector('#current-loadhall');
+        currentLoadhallDiv.innerHTML = `Current Loadhall: ${newLoadhall.id} of 2`;
+
         // Get the new LoadHallView
         const newLoadhallView = this.getLoadhallView(newLoadhall);
 
