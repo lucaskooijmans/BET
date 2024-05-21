@@ -29,6 +29,15 @@ input{
     margin: 1rem 5rem;
 }
 
+.truckContainer {
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+    border-width: 1px;
+    display: unset;
+    position: relative;
+}
+
 .row {
     display: flex;
 }
@@ -57,8 +66,8 @@ input{
 }
 
 .block {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border: 1px solid #000;
     flex-shrink: 0;
     position: relative;
