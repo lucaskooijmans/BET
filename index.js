@@ -62,4 +62,6 @@ window.onload = function() {
     switchLoadhallButton.addEventListener('click', function() {
         loadhallController.switchLoadhall();
     });
+
+    loadhallController.setAssemblyLineController(assemblyLineController);
 }

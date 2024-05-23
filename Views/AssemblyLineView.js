@@ -127,5 +127,14 @@ class AssemblyLineView {
 
     }
 
+    addEventListeners() {
+        console.log('added back the eventlisteners when switching loadhalls');
 
+        const shapes = document.querySelectorAll('.shape');
+        shapes.forEach(shape => {
+            shape.addEventListener('mousedown', this.startDrag);
+            document.addEventListener('mouseup', this.endDrag);
+        });
+        document.addEventListener('mousemove', this.dragPiece);
+    }
 }

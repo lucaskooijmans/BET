@@ -37,4 +37,8 @@ class AssemblyLineController {
             }
         }
     }
+
+    addEventListeners() {
+        this.assemblyLineView.addEventListeners(); 
+    }
 }
