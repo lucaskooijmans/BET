@@ -4,6 +4,7 @@ class LoadHallController {
         this.loadHallManager = loadHallManager;
         this.loadHallViews = new Map(); // Map to store LoadHall to LoadHallView associations
         this.savedContent = new Map(); // Map to store saved content for each LoadHall
+        this.assemblyLineController = null;
     }
 
     initializeLoadhalls() {
@@ -51,5 +52,12 @@ class LoadHallController {
         } else {
             truckAssemblyLineContainer.innerHTML = '';
         }
+
+        // After switching the loadhall, add the event listeners to the new elements
+        this.assemblyLineController.addEventListeners();
+    }
+
+    setAssemblyLineController(assemblyLineController) {
+        this.assemblyLineController = assemblyLineController;
     }
 }

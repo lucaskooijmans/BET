@@ -6,6 +6,8 @@ class AssemblyLineView {
         this.endDrag = this.endDrag.bind(this);
         this.activePieceX = 0;
         this.activePieceY = 0;
+        this.placedX = 0;
+        this.placedY = 0;
         this.cellSize = 15;
         this.activePiece = null;
     }
@@ -44,7 +46,7 @@ class AssemblyLineView {
         }
         shape.addEventListener('mousedown', this.startDrag)
         document.addEventListener('mouseup', this.endDrag);
-        shapeContainer.append(shape);
+        shapeContainer.prepend(shape);
     }
 
     startDrag(event) {
@@ -66,8 +68,8 @@ class AssemblyLineView {
         const newX = event.clientX - this.dragStartX;
         const newY = event.clientY - this.dragStartY;
 
-        const snappedX = Math.round(newX / this.cellSize) * this.cellSize;
-        const snappedY = Math.round(newY / this.cellSize) * this.cellSize;
+        const snappedX = newX;
+        const snappedY = newY;
 
         tetrisPiece.style.left = `${snappedX}px`;
         tetrisPiece.style.top = `${snappedY}px`;
@@ -76,7 +78,10 @@ class AssemblyLineView {
         event.preventDefault();
     }
 
-    endDrag() {
+    endDrag(event) {
+        this.activePiece.classList.remove('dragging');
+        this.placedX = this.activePiece.getBoundingClientRect().x;
+        this.placedY = this.activePiece.getBoundingClientRect().y;
         document.removeEventListener('mousemove', this.dragPiece);
             const shapes = document.querySelectorAll('.shape');
             const shapesArray = Array.from(shapes);
@@ -99,11 +104,37 @@ class AssemblyLineView {
                     }
                 }
             }
-            if(collision){
+            this.activePiece.style.display = 'none';
+            const dropTarget = document.elementFromPoint(event.clientX, event.clientY);
+            this.activePiece.style.display = 'inline-grid';
+            let truck = this.activePiece.parentElement.parentElement.parentElement.querySelector('truck');
+            if(!truck){
                 this.activePiece.style.left = this.activePieceX;
                 this.activePiece.style.top = this.activePieceY;
             }
+            if(collision || dropTarget !== this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer')){
+                console.log(dropTarget);
+                console.log(this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer'));
+                this.activePiece.style.left = this.activePieceX;
+                this.activePiece.style.top = this.activePieceY;
+            }
+            else{
+                let piece = this.activePiece;
+                const truckShapeContainer = this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer');
+                this.activePiece.parentElement.removeChild(this.activePiece);
+                truckShapeContainer.append(piece);
+            }
+
     }
 
+    addEventListeners() {
+        console.log('added back the eventlisteners when switching loadhalls');
 
+        const shapes = document.querySelectorAll('.shape');
+        shapes.forEach(shape => {
+            shape.addEventListener('mousedown', this.startDrag);
+            document.addEventListener('mouseup', this.endDrag);
+        });
+        document.addEventListener('mousemove', this.dragPiece);
+    }
 }
