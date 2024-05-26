@@ -46,7 +46,7 @@ class AssemblyLineView {
         }
         shape.addEventListener('mousedown', this.startDrag)
         document.addEventListener('mouseup', this.endDrag);
-        shapeContainer.append(shape);
+        shapeContainer.prepend(shape);
     }
 
     startDrag(event) {
