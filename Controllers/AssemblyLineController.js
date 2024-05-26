@@ -31,6 +31,10 @@ class AssemblyLineController {
     generateTetrominos() {
         const assemblyLineNodes = document.querySelectorAll('.assemblyLine');
         const currentLoadhall = this.loadhallmanager.getCurrentLoadhall();
+        for(let i = 0; i < assemblyLineNodes.length; i++) {
+            const shapeContainer = assemblyLineNodes[i].querySelector('.shapeContainer');
+            currentLoadhall.assemblyLines[i].setTetrominoAmount(shapeContainer.children.length);
+        }
         for(let i = 0; i < currentLoadhall.assemblyLines.length; i++) {
             if(currentLoadhall.assemblyLines[i].addTetromino()) {
                 this.generateShape(assemblyLineNodes[i]);

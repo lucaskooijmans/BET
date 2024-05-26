@@ -1,6 +1,6 @@
 class AssemblyLine {
     constructor() {
-        this.queue = [];
+        this.tetrominoAmount = 0;
         this.maxSize = 5;
         this.truck = null;
     }
@@ -18,11 +18,15 @@ class AssemblyLine {
     }
 
     addTetromino(tetromino) {
-        if(this.queue.length < this.maxSize){
-            this.queue.push(tetromino);
+        if(this.tetrominoAmount < this.maxSize){
+            this.tetrominoAmount++;
             return true;
         }
         return false;
+    }
+
+    setTetrominoAmount(amount) {
+        this.tetrominoAmount = amount;
     }
 
     popTetromino() {
