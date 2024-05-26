@@ -21,6 +21,8 @@ class TruckFormView {
 
         const shapeContainer = document.createElement('div');
         shapeContainer.classList.add('truckContainer');
+        shapeContainer.style.height = `${length * 1.3}rem`;
+        shapeContainer.style.width = `${width * 1.3}rem`;
         truckDiv.append(shapeContainer);
 
         const truckAssemblylines = document.querySelectorAll('.truck-assemblyline');

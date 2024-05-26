@@ -30,8 +30,6 @@ input{
 }
 
 .truckContainer {
-    height: 100px;
-    width: 100px;
     border-style: solid;
     border-width: 1px;
     display: unset;
