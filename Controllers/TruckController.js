@@ -115,6 +115,12 @@ class TruckController {
             alert('Input cannot be greater than 10');
             return false;
         }
+
+        // Check if the value is a digit and greater than 0
+        if (!/^\d+$/.test(value) || value <= 0) {
+            alert('Input must be a digit greater than 0');
+            return false;
+        }
         return true;
     }
 
@@ -125,7 +131,6 @@ class TruckController {
             const widthInput = document.querySelector('#width-input');
 
             const intervalInput = document.querySelector('#interval-input');
-            this.truckFormView.setInterval(intervalInput.value);
 
             const typeSelect = document.querySelector('#type-select');
             const truck = new Truck(lengthInput.value, widthInput.value, intervalInput.value, typeSelect.value);
@@ -134,7 +139,7 @@ class TruckController {
             if (assemblyLine) {
                 assemblyLine.assignTruck(truck);
                 currentLoadhall.addTruck(truck);
-                this.truckFormView.renderTruck(truck.length, truck.width, truck.type);
+                this.truckFormView.renderTruck(truck.length, truck.width, truck.type, truck.interval);
             } else {
                 alert('All assembly lines have a truck assigned. Please create a new assembly line.');
             }
