@@ -83,48 +83,58 @@ class AssemblyLineView {
         this.placedX = this.activePiece.getBoundingClientRect().x;
         this.placedY = this.activePiece.getBoundingClientRect().y;
         document.removeEventListener('mousemove', this.dragPiece);
-            const shapes = document.querySelectorAll('.shape');
-            const shapesArray = Array.from(shapes);
-            shapesArray.splice(shapesArray.indexOf(this.activePiece), 1);
-            const currentShapeBlocks = this.activePiece.querySelectorAll('.shapeBlock');
+        const shapes = document.querySelectorAll('.shape');
+        const shapesArray = Array.from(shapes);
+        shapesArray.splice(shapesArray.indexOf(this.activePiece), 1);
+        const currentShapeBlocks = this.activePiece.querySelectorAll('.shapeBlock');
 
-            let collision = false;
-            for (let i = 0; i < currentShapeBlocks.length; i++) {
-                const block1 = currentShapeBlocks[i].getBoundingClientRect();
-                for (let j = 0; j < shapesArray.length; j++) {
-                    for (let x = 0; x < shapesArray[j].children.length; x++){
-                        const block2 = shapesArray[j].children[x].getBoundingClientRect();
-                        if (block1.x + block1.width >= block2.x &&
-                            block1.x <= block2.x + block2.width &&
-                            block1.y + block1.height >= block2.y &&
-                            block1.y <= block2.y + block2.height) {
-                            console.log("Collision detected!");
-                            collision = true;
-                        }
+        const collision = this.checkCollision(currentShapeBlocks, shapesArray)
+
+        this.activePiece.style.display = 'none';
+        this.activePiece.style.display = 'inline-grid';
+
+        this.movePieve(collision);
+    }
+
+    movePieve(collision) {
+        let truck = this.activePiece.parentElement.parentElement.parentElement.querySelector('truck');
+        const dropTarget = document.elementFromPoint(event.clientX, event.clientY);
+        if(!truck){
+            this.activePiece.style.left = this.activePieceX;
+            this.activePiece.style.top = this.activePieceY;
+        }
+        if(collision || dropTarget !== this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer')){
+            console.log(dropTarget);
+            console.log(this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer'));
+            this.activePiece.style.left = this.activePieceX;
+            this.activePiece.style.top = this.activePieceY;
+        }
+        else{
+            let piece = this.activePiece;
+            const truckShapeContainer = this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer');
+            this.activePiece.parentElement.removeChild(this.activePiece);
+            truckShapeContainer.append(piece);
+        }
+    }
+
+    checkCollision(currentShapeBlocks, shapesArray) {
+        let collision = false;
+        for (let i = 0; i < currentShapeBlocks.length; i++) {
+            const block1 = currentShapeBlocks[i].getBoundingClientRect();
+            for (let j = 0; j < shapesArray.length; j++) {
+                for (let x = 0; x < shapesArray[j].children.length; x++){
+                    const block2 = shapesArray[j].children[x].getBoundingClientRect();
+                    if (block1.x + block1.width >= block2.x &&
+                        block1.x <= block2.x + block2.width &&
+                        block1.y + block1.height >= block2.y &&
+                        block1.y <= block2.y + block2.height) {
+                        console.log("Collision detected!");
+                        collision = true;
                     }
                 }
             }
-            this.activePiece.style.display = 'none';
-            const dropTarget = document.elementFromPoint(event.clientX, event.clientY);
-            this.activePiece.style.display = 'inline-grid';
-            let truck = this.activePiece.parentElement.parentElement.parentElement.querySelector('truck');
-            if(!truck){
-                this.activePiece.style.left = this.activePieceX;
-                this.activePiece.style.top = this.activePieceY;
-            }
-            if(collision || dropTarget !== this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer')){
-                console.log(dropTarget);
-                console.log(this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer'));
-                this.activePiece.style.left = this.activePieceX;
-                this.activePiece.style.top = this.activePieceY;
-            }
-            else{
-                let piece = this.activePiece;
-                const truckShapeContainer = this.activePiece.parentElement.parentElement.parentElement.querySelector('.truck').querySelector('.truckContainer');
-                this.activePiece.parentElement.removeChild(this.activePiece);
-                truckShapeContainer.append(piece);
-            }
-
+        }
+        return collision;
     }
 
     addEventListeners() {
