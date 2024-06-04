@@ -3,8 +3,13 @@ window.onload = function() {
 
     async function getWeather(city) {
         const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-        const weatherData = await response.json();
-        return weatherData;
+        if(response !== null) {
+            const weatherData = await response.json();
+            if(weatherData !== null) {
+                return weatherData;
+            }
+        }
+        return 'Weather could not be retrieved.';
     }
 
     function displayWeather(city) {
