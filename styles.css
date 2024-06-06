@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+#form-container {
+    display: flex;
+}
+
+input{
+    width: 2rem;
+    height: 1.3rem;
+    border-radius: 10px;
+}
+
+#submit-button {
+    width: 3.5rem;
+}
+
+#navigation-buttons {
+    position: relative;
+}
+
+.truck {
+    display: inline-grid;
+    margin: 1rem 5rem;
+}
+
+.truckContainer {
+    border-style: solid;
+    border-width: 1px;
+    display: unset;
+    position: relative;
+}
+
+.row {
+    display: flex;
+}
+
+#truck-assembly-line-container {
+    display: flex;
+}
+
+.assemblyLine {
+    border-style: solid;
+    width: 3rem;
+    border-radius: 1px;
+    margin: 1rem 5rem;
+    position: relative;
+    height: 250px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 15px);
+    grid-template-rows: repeat(20, 15px);
+    gap: 1px;
+    border: 1px solid #000;
+    height: 250px;
+    position: relative;
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+    position: relative;
+}
+.shapeBlock{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.row-border {
+    border: 0;
+}
+
+.send-away {
+    animation: send-away 2s forwards;
+}
+
+.come-back {
+    animation: come-back 2s forwards;
+}
+
+@keyframes send-away {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes come-back {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(0); }
+}
+
+.shape {
+    position: relative;
+    display: inline-grid;
+}

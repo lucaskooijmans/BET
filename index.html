@@ -1,13 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BET</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <select id="city-select">
+        <option value="Select a city">Select a city</option>
+        <option value="Amsterdam">Amsterdam</option>
+        <option value="London">London</option>
+        <option value="New York">New York</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="Las Vegas">Las Vegas</option>
+        <option value="Vlijmen">Vlijmen</option>
+    </select>
+    <div id="weather-info"></div>
 
+    <div id="input-container">
+        <div class="form-step">
+            <label for="length-input">Length:</label>
+            <input id="length-input">
+            <button id="next-button-1">Next</button>
+        </div>
+        <div class="form-step hidden">
+            <label for="width-input">Width:</label>
+            <input id="width-input">
+            <button id="prev-button-1">Previous</button>
+            <button id="next-button-2">Next</button>
+        </div>
+        <div class="form-step hidden">
+            <label for="interval-input">Interval:</label>
+            <input id="interval-input">
+            <button id="prev-button-2">Previous</button>
+            <button id="next-button-3">Next</button>
+        </div>
+        <div class="form-step hidden">
+            <label for="type-select">Type:</label>
+            <select id="type-select">
+                <option value="cold-transport">Cold Transport</option>
+                <option value="fragile-transport">Fragile Transport</option>
+                <option value="standard-transport">Standard Transport</option>
+                <option value="pallets">Pallets</option>
+                <option value="fast-shipping">Fast Shipping</option>
+            </select>
+            <button id="prev-button-3">Previous</button>
+            <button id="submit-button">Submit</button>
+        </div>
+    </div>
+
+    <button id="assembly-line-button">Create Assembly Line</button>
+    <button id="create-shape-button">Create Shape</button>
+    <button id="switch-loadhall-button">Switch Loadhall</button>
+
+    <div id="current-loadhall"></div>
+    
+    <div id="loadhall-container">
+        <div id="truck-assembly-line-container"></div>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="Models/Truck.js"></script>
+    <script src="Controllers/TruckController.js"></script>
+    <script src="Views/TruckFormView.js"></script>
+    <script src="Views/AssemblyLineView.js"></script>
+    <script src="Models/AssemblyLine.js"></script>
+    <script src="Controllers/AssemblyLineController.js"></script>
+    <script src="Views/ShapeView.js"></script>
+    <script src="Models/ShapeFactory.js"></script>
+    <script src="Models/Shape.js"></script>
+    <script src="Controllers/ShapeController.js"></script>
+    <script src="Models/LoadHall.js"></script>
+    <script src="Models/LoadHallManager.js"></script>
+    <script src="Views/LoadHallView.js"></script>
+    <script src="Controllers/LoadHallController.js"></script>
 </body>
 </html>
