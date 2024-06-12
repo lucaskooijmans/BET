@@ -2,18 +2,28 @@ window.onload = function() {
     const apiKey = 'bf56484408341784d4cba93d5d445abb';
 
     async function getWeather(city) {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-        if(response !== null) {
-            const weatherData = await response.json();
-            if(weatherData !== null) {
-                return weatherData;
-            }
-        }
-        return 'Weather could not be retrieved.';
+        return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+            .then(response => {
+                if (response !== null) {
+                    return response.json();
+                }
+            })
+            .then(weatherData => {
+                if (weatherData !== null) {
+                    return weatherData;
+                }
+                throw new Error('Weather data is null');
+            })
+            .catch(() => 'Weather could not be retrieved.');
     }
 
     function displayWeather(city) {
         getWeather(city).then(data => {
+            if (typeof data === 'string') {
+                alert(data);
+                return;
+            }
+
             const weatherInfo = document.querySelector('#weather-info');
             weatherInfo.innerHTML = `Temperature: ${data.main.temp}°C<br>Weather: ${data.weather[0].main}<br>Wind Speed: ${data.wind.speed} m/s<br><br>`;
 
@@ -23,7 +33,7 @@ window.onload = function() {
                 temperature: data.main.temp,
                 windSpeed: data.wind.speed
             };
-    
+
             truckController.updateWeather(weather);
         });
     }
