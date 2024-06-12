@@ -4,17 +4,21 @@ window.onload = function() {
     async function getWeather(city) {
         return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
             .then(response => {
-                if (response !== null) {
-                    return response.json();
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                return response.json();
             })
             .then(weatherData => {
-                if (weatherData !== null) {
-                    return weatherData;
+                if (weatherData === null) {
+                    throw new Error('Weather data is null');
                 }
-                throw new Error('Weather data is null');
+                return weatherData;
             })
-            .catch(() => 'Weather could not be retrieved.');
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                return 'Weather could not be retrieved.';
+            });
     }
 
     function displayWeather(city) {
